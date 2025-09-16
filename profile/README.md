@@ -33,6 +33,10 @@ Below is a list of courses with archived materials. Each course has its own repo
 
 ### Computer Engineering (CEG)
 
+  * **[CEG 3310: Computer Organization](https://github.com/WSU-Classes/CEG3310)**
+
+      * Organization and sequential operation of digital computers. Binary and hexadecimal number systems, 2’s complement arithmetic, program control, memory organization and hierarchy, addressing modes, stacks and parameter passing, interrupts and traps, I/O devices, DMA, cache, and virtual memory.
+
   * **[CEG 3320: Digital System Design](https://github.com/WSU-Classes/CEG3320)**
 
       * Basics of digital computer hardware and design. Topics include switching algebra and switching functions, logic design of combinational and sequential circuits, storage elements, register-level design, and instrumentation.
