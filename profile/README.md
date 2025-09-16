@@ -35,11 +35,11 @@ Below is a list of courses with archived materials. Each course has its own repo
 
   * **[CEG 3320: Digital System Design with VHDL](https://github.com/WSU-Classes/CEG3320)**
 
+      * Basics of digital computer hardware and design. Topics include switching algebra and switching functions, logic design of combinational and sequential circuits, storage elements, register-level design, and instrumentation.
+
+  * **[CEG 4324: Digital System Design with VHDL](https://github.com/WSU-Classes/CEG4324)**
+
       * An introduction to digital logic and system design using the VHDL hardware description language. Covers combinational and sequential logic design and implementation on FPGAs.
-
-  * **[CEG 4324: Mobile Application Development](https://github.com/WSU-Classes/CEG4324)**
-
-      * A project-based course on developing applications for mobile platforms like Android or iOS. Covers UI/UX design, platform-specific APIs, and the application lifecycle.
 
   * **[CEG 4350: Operating Systems](https://github.com/WSU-Classes/CEG4350)**
 
