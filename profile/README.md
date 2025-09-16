@@ -15,33 +15,33 @@ Below is a list of courses with archived materials. Each course has its own repo
 
 ### Computer Science (CS)
 
-  * **[CS 1160: Introduction to Computer Programming](https://www.google.com/search?q=https://github.com/WSU-Classes/CS1160)**
+  * **[CS 1160: Introduction to Computer Programming](https://github.com/WSU-Classes/CS1160)**
 
       * An introductory course on the fundamentals of computer programming, typically using Python. Covers basic syntax, data structures, and problem-solving.
 
-  * **[CS 1180: Computer Science I](https://www.google.com/search?q=https://github.com/WSU-Classes/CS1180)**
+  * **[CS 1180: Computer Science I](https://github.com/WSU-Classes/CS1180)**
 
       * Focuses on foundational programming principles using a language like C++. Topics include variables, control structures, functions, arrays, and an introduction to object-oriented concepts.
 
-  * **[CS 1181: Computer Science II](https://www.google.com/search?q=https://github.com/WSU-Classes/CS1181)**
+  * **[CS 1181: Computer Science II](https://github.com/WSU-Classes/CS1181)**
 
       * A continuation of CS I, this course delves deeper into object-oriented programming (OOP), data structures (like linked lists, stacks, queues), and algorithms.
 
-  * **[CS 3100: Data Structures and Algorithms](https://www.google.com/search?q=https://github.com/WSU-Classes/CS3100)**
+  * **[CS 3100: Data Structures and Algorithms](https://github.com/WSU-Classes/CS3100)**
 
       * A comprehensive study of fundamental data structures and the algorithms that operate on them. Topics include trees, heaps, hash tables, graphs, and algorithm analysis ($O(n)$).
 
 ### Computer Engineering (CEG)
 
-  * **[CEG 3320: Digital System Design with VHDL](https://www.google.com/search?q=https://github.com/WSU-Classes/CEG3320)**
+  * **[CEG 3320: Digital System Design with VHDL](https://github.com/WSU-Classes/CEG3320)**
 
       * An introduction to digital logic and system design using the VHDL hardware description language. Covers combinational and sequential logic design and implementation on FPGAs.
 
-  * **[CEG 4324: Mobile Application Development](https://www.google.com/search?q=https://github.com/WSU-Classes/CEG4324)**
+  * **[CEG 4324: Mobile Application Development](https://github.com/WSU-Classes/CEG4324)**
 
       * A project-based course on developing applications for mobile platforms like Android or iOS. Covers UI/UX design, platform-specific APIs, and the application lifecycle.
 
-  * **[CEG 4350: Operating Systems](https://www.google.com/search?q=https://github.com/WSU-Classes/CEG4350)**
+  * **[CEG 4350: Operating Systems](https://github.com/WSU-Classes/CEG4350)**
 
       * A study of the principles and concepts of modern operating systems. Topics include process management, memory management, file systems, scheduling, and concurrency.
 
