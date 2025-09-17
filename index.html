@@ -244,7 +244,7 @@ user_name = <span class="syntax-function-vs">input</span>(<span class="syntax-st
                     <div class="rounded-lg vscode-card card-base overflow-hidden flex flex-col">
                         <div class="vscode-header">
                             <div class="vscode-controls"><span></span><span></span><span></span></div>
-                             <span class="text-sm text-slate-400 font-fira-code">/oop/Shape.java</span>
+                             <span class="text-sm text-slate-400 font-fira-code">/records/Student.java</span>
                         </div>
                          <div class="vscode-body flex-grow">
                             <div class="line-numbers font-fira-code text-sm"><pre>1
@@ -253,13 +253,17 @@ user_name = <span class="syntax-function-vs">input</span>(<span class="syntax-st
 4
 5
 6
-7</pre></div>
-                            <pre class="vscode-pre text-sm font-fira-code overflow-x-auto"><code class="language-java"><span class="syntax-keyword-vs">public class</span> <span class="syntax-class-vs">Shape</span> {
-    <span class="syntax-keyword-vs">protected int</span> x, y;
-    
-    <span class="syntax-keyword-vs">public</span> <span class="syntax-class-vs">Shape</span>(<span class="syntax-keyword-vs">int</span> x, <span class="syntax-keyword-vs">int</span> y) {
-        <span class="syntax-keyword-vs">this</span>.x = x;
-        <span class="syntax-keyword-vs">this</span>.y = y;
+7
+8
+9</pre></div>
+                            <pre class="vscode-pre text-sm font-fira-code overflow-x-auto"><code class="language-java"><span class="syntax-keyword-vs">public class</span> <span class="syntax-class-vs">CS1180Student</span> 
+       <span class="syntax-keyword-vs">implements</span> Comparable&lt;CS1180Student&gt; {
+    <span class="syntax-keyword-vs">private int</span> score;
+    <span class="syntax-keyword-vs">private</span> String name;
+
+    <span class="syntax-keyword-vs">public</span> <span class="syntax-function-vs">CS1180Student</span>(<span class="syntax-keyword-vs">int</span> s, String n) {
+        <span class="syntax-keyword-vs">this</span>.score = s;
+        <span class="syntax-keyword-vs">this</span>.name = n;
     }
 }</code></pre>
                         </div>
@@ -273,9 +277,41 @@ user_name = <span class="syntax-function-vs">input</span>(<span class="syntax-st
                     <div class="rounded-lg vscode-card card-base overflow-hidden flex flex-col">
                         <div class="vscode-header">
                             <div class="vscode-controls"><span></span><span></span><span></span></div>
-                             <span class="text-sm text-slate-400 font-fira-code">/structs/Node.cpp</span>
+                             <span class="text-sm text-slate-400 font-fira-code">/threading/ZipCrack.java</span>
                         </div>
                         <div class="vscode-body flex-grow">
+                            <div class="line-numbers font-fira-code text-sm"><pre>1
+2
+3
+4
+5
+6
+7
+8</pre></div>
+                            <pre class="vscode-pre text-sm font-fira-code overflow-x-auto"><code class="language-java"><span class="syntax-keyword-vs">class</span> <span class="syntax-class-vs">Cracker</span> <span class="syntax-keyword-vs">extends</span> <span class="syntax-class-vs">Thread</span> {
+    <span class="syntax-keyword-vs">public void</span> <span class="syntax-function-vs">run</span>(){
+        <span class="syntax-keyword-vs">for</span>(String password : passList){
+            <span class="syntax-function-vs">Crack</span>(password);
+            <span class="syntax-keyword-vs">if</span> (ZipCrack.passFound) {
+                <span class="syntax-keyword-vs">break</span>; <span class="syntax-comment-vs">// Stop if found</span>
+            }
+        }
+    }
+}</code></pre>
+                        </div>
+                        <div class="p-6 border-t border-gray-700">
+                            <h3 class="font-fira-code font-bold text-xl text-slate-200">CS 1181</h3>
+                            <p class="text-slate-400 mt-2 text-sm">Computer Science II: Advanced programming, focusing on the use of data structures and tools that facilitate coding.</p>
+                            <a href="https://github.com/WSU-Classes/CS1181" target="_blank" class="inline-block mt-4 font-semibold text-blue-400 hover:text-blue-300 transition-colors cs-card-link">View Repo </a>
+                        </div>
+                    </div>
+                    <!-- CS 3100 -->
+                    <div class="rounded-lg vscode-card card-base overflow-hidden flex flex-col">
+                        <div class="vscode-header">
+                            <div class="vscode-controls"><span></span><span></span><span></span></div>
+                            <span class="text-sm text-slate-400 font-fira-code">/structs/Node.cpp</span>
+                        </div>
+                         <div class="vscode-body flex-grow">
                             <div class="line-numbers font-fira-code text-sm"><pre>1
 2
 3
@@ -288,32 +324,6 @@ user_name = <span class="syntax-function-vs">input</span>(<span class="syntax-st
     Node* next;
 };
 <span class="syntax-comment-vs">// For a linked list</span>
-</code></pre>
-                        </div>
-                        <div class="p-6 border-t border-gray-700">
-                            <h3 class="font-fira-code font-bold text-xl text-slate-200">CS 1181</h3>
-                            <p class="text-slate-400 mt-2 text-sm">Computer Science II: Advanced programming, focusing on the use of data structures and tools that facilitate coding.</p>
-                            <a href="https://github.com/WSU-Classes/CS1181" target="_blank" class="inline-block mt-4 font-semibold text-blue-400 hover:text-blue-300 transition-colors cs-card-link">View Repo </a>
-                        </div>
-                    </div>
-                    <!-- CS 3100 -->
-                    <div class="rounded-lg vscode-card card-base overflow-hidden flex flex-col">
-                        <div class="vscode-header">
-                            <div class="vscode-controls"><span></span><span></span><span></span></div>
-                            <span class="text-sm text-slate-400 font-fira-code">/algos/Fib.js</span>
-                        </div>
-                         <div class="vscode-body flex-grow">
-                            <div class="line-numbers font-fira-code text-sm"><pre>1
-2
-3
-4
-5
-6</pre></div>
-                            <pre class="vscode-pre text-sm font-fira-code overflow-x-auto"><code class="language-javascript"><span class="syntax-keyword-vs">function</span> <span class="syntax-function-vs">fib</span>(<span class="syntax-variable-vs">n</span>) {
-  <span class="syntax-keyword-vs">if</span> (n &lt;= <span class="syntax-number-vs">1</span>) <span class="syntax-keyword-vs">return</span> n;
-  <span class="syntax-keyword-vs">return</span> <span class="syntax-function-vs">fib</span>(n - <span class="syntax-number-vs">1</span>) + <span class="syntax-function-vs">fib</span>(n - <span class="syntax-number-vs">2</span>);
-}
-<span class="syntax-comment-vs">// O(2^n) complexity</span>
 </code></pre>
                         </div>
                         <div class="p-6 border-t border-gray-700">
@@ -383,10 +393,13 @@ Sum  = A <span class="syntax-logic-op">&oplus;</span> B <span class="syntax-logi
                             <h3 class="font-bold text-xl text-slate-800">CEG 4350: Operating Systems</h3>
                             <p class="text-slate-600 mt-2 text-sm">OS internals, file systems, process control, virtual memory, and access control in C++.</p>
                             <div class="ceg-snippet">
-                                <pre><code><span class="syntax-asm-op">push</span> <span class="syntax-asm-reg">rbp</span>          ; Fn Prologue
-<span class="syntax-asm-op">mov</span>  <span class="syntax-asm-reg">rbp, rsp</span>
-<span class="syntax-asm-op">sub</span>  <span class="syntax-asm-reg">rsp, 16</span>      ; Allocate stack
-<span class="syntax-asm-op">mov</span>  <span class="syntax-asm-reg">eax, 0</span>         ; Return 0</code></pre>
+                                <pre><code><span class="syntax-asm-op">isr_common_stub:</span>
+  <span class="syntax-asm-op">pusha</span>          ; Save registers
+  <span class="syntax-asm-op">mov</span>  <span class="syntax-asm-reg">ax, 0x10</span>   ; Kernel Data Seg
+  <span class="syntax-asm-op">mov</span>  <span class="syntax-asm-reg">ds, ax</span>
+  <span class="syntax-asm-op">call</span> _irq_handler ; Call C handler
+  <span class="syntax-asm-op">popa</span>           ; Restore registers
+  <span class="syntax-asm-op">iret</span>           ; Return from interrupt</code></pre>
                             </div>
                         </div>
                         <a href="https://github.com/WSU-Classes/CEG4350" target="_blank" class="inline-block mt-4 font-semibold text-teal-600 hover:text-teal-800 transition-colors">View Repo &rarr;</a>
@@ -443,6 +456,10 @@ H = (s/L) / (s^2 + s/(R*C) + <span class="syntax-matlab-number">1</span>/(L*C));
 
 </body>
 </html>
+
+
+
+
 
 
 
