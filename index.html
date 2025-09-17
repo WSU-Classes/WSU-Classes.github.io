@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineering Coursework Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%233b82f6%22>{;}</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to enhance the theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Default background */
+        }
+        .font-fira-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* --- Section-Specific Backgrounds & Transitions --- */
+        .cs-bg {
+            background-color: #f8fafc; /* slate-50 */
+            position: relative;
+            overflow: hidden;
+        }
+        /* Add subtle animated symbols in the CS background */
+        .cs-bg::before {
+            content: '<> {} (); /';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Fira Code', monospace;
+            color: #e2e8f0; /* slate-200 */
+            font-size: 2rem;
+            text-align: center;
+            z-index: 0;
+            animation: drift 60s linear infinite;
+            opacity: 0.5;
+        }
+        .ceg-bg {
+            background-color: #e2e8f0; /* slate-200 */
+            background-image:
+                /* Faint logic gate icons */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path d="M20 20 H50 C65 20 65 50 50 50 H20 V20 M50 35 H70 M30 10 V35 M40 10 V35" fill="none" stroke="rgba(148, 163, 184, 0.2)" stroke-width="2"/></svg>'), /* AND gate */
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path d="M20,20 C40,20 40,50 20,50 C40,50 40,80 20,80 M20,50 H50 C65,50 65,65 50,65 H70" fill="none" stroke="rgba(148, 163, 184, 0.2)" stroke-width="2"/></svg>'), /* OR gate */
+                /* Schematic grid */
+                linear-gradient(rgba(100, 116, 139, 0.1) 1px, transparent 1px),
+                linear-gradient(to right, rgba(100, 116, 139, 0.1) 1px, transparent 1px);
+            background-size: 200px 200px, 150px 150px, 2rem 2rem;
+            background-position: 10% 20%, 80% 75%, 0 0, 0 0;
+            background-repeat: no-repeat, no-repeat, repeat, repeat;
+            position: relative;
+        }
+        .ee-bg {
+            background-color: #0d1a2e; /* Dark navy */
+            background-image: linear-gradient(135deg, #0d1a2e 0%, #12233e 100%);
+            position: relative;
+            /* Inset glow to feel like an active board */
+            box-shadow: inset 0 0 80px 20px rgba(13, 26, 46, 0.9);
+        }
+
+        /* --- Transitions --- */
+        .section-transition {
+            height: 250px;
+            position: relative;
+        }
+        .cs-to-ceg-transition {
+            background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+        }
+        .ceg-to-ee-transition {
+            background: linear-gradient(to bottom, #e2e8f0, #0d1a2e);
+        }
+        .trace-divider {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #94a3b8 30%, #94a3b8 70%, transparent);
+        }
+        .pcb-trace-divider {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, transparent, #d9b96f, #b89b5c, #d9b96f, transparent);
+            opacity: 0.5;
+            box-shadow: 0 0 5px rgba(217, 185, 111, 0.3);
+        }
+
+        /* --- Card & Interaction Styling --- */
+        .card-base {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-base:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* CS Card */
+        .vscode-card {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            color: #d4d4d4;
+        }
+        .vscode-header {
+            background-color: #3c3c3c; padding: 0.5rem 0.75rem; display: flex; align-items: center; border-bottom: 1px solid #333;
+        }
+        .vscode-controls { display: flex; gap: 0.5rem; }
+        .vscode-controls span { width: 0.75rem; height: 0.75rem; border-radius: 9999px; background-color: #555; }
+        .vscode-body { display: flex; }
+        .line-numbers { color: #858585; text-align: right; padding: 1rem 0.75rem 1rem 1rem; user-select: none; }
+        .vscode-pre { background-color: #1e1e1e; padding: 1rem; }
+        .syntax-keyword-vs { color: #569cd6; } .syntax-function-vs { color: #dcdcaa; } .syntax-string-vs { color: #ce9178; } .syntax-comment-vs { color: #6a9955; } .syntax-class-vs { color: #4ec9b0; } .syntax-variable-vs { color: #9cdcfe; }
+        .cs-card-link::after { content: '_'; opacity: 0; font-weight: bold; animation: blink 1.2s step-end infinite; transition: opacity 0.2s; }
+        .vscode-card:hover .cs-card-link::after { opacity: 1; }
+
+        /* CEG Card */
+        .ceg-card { border-top: 4px solid #0d9488; /* teal-600 */ }
+        .ceg-card:hover { animation: pulse 1.5s infinite cubic-bezier(0.4, 0, 0.6, 1); }
+        .ceg-snippet {
+            background-color: #f1f5f9; /* slate-100 */
+            border: 1px solid #cbd5e1; /* slate-300 */
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            margin-top: 1rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: #475569; /* slate-600 */
+        }
+        .syntax-asm-reg { color: #be123c; } /* rose-700 */
+        .syntax-asm-op { color: #1d4ed8; } /* blue-700 */
+        .syntax-vhdl-keyword { color: #0d9488; } /* teal-600 */
+        .syntax-vhdl-type { color: #ea580c; } /* orange-600 */
+        .syntax-logic-op { color: #65a30d; } /* lime-600 */
+
+
+        /* EE Card */
+        .ee-card {
+            background-color: rgba(30, 41, 59, 0.5); /* slate-800/50 */
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(251, 191, 36, 0.2); /* amber-400/20 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .ee-card:hover {
+            border-color: rgba(251, 191, 36, 0.5);
+            box-shadow: 0 0 25px rgba(251, 191, 36, 0.2);
+        }
+        .ee-spec { color: #a5f3fc; /* cyan-200 */ font-weight: 500; }
+        .waveform-divider { height: 2px; background: #06b6d4; /* cyan-500 */ margin: 0.75rem 0; opacity: 0.5; }
+        .ee-snippet {
+            background-color: rgba(13, 26, 46, 0.7); /* Darker navy */
+            border: 1px solid rgba(251, 191, 36, 0.15);
+            padding: 0.75rem;
+            border-radius: 0.25rem;
+            margin-top: 1rem;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: #94a3b8; /* slate-400 */
+        }
+        .syntax-matlab-comment { color: #16a34a; } /* green-600 */
+        .syntax-matlab-keyword { color: #c026d3; } /* fuchsia-600 */
+        .syntax-matlab-string { color: #ce9178; }
+        .syntax-matlab-number { color: #b5cea8; }
+
+        /* --- Animations --- */
+        @keyframes drift {
+            from { transform: translateY(-20%) rotate(0deg); }
+            to { transform: translateY(20%) rotate(10deg); }
+        }
+        @keyframes pulse { 
+            0%, 100% { transform: scale(1) translateY(0); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+            50% { transform: scale(1.02) translateY(-4px); box-shadow: 0 15px 20px -5px rgba(13, 148, 136, 0.2); }
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+        .section-title {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s 0.2s ease-out forwards;
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header / Navigation -->
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-slate-900 font-fira-code">./portfolio</h1>
+            <div class="space-x-6 hidden md:block">
+                <a href="#cs" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Computer Science</a>
+                <a href="#ceg" class="text-slate-600 hover:text-teal-600 font-medium transition-colors">Computer Engineering</a>
+                <a href="#ee" class="text-slate-600 hover:text-amber-500 font-medium transition-colors">Electrical Engineering</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- =================================================================== -->
+        <!-- Computer Science Section -->
+        <!-- =================================================================== -->
+        <section id="cs" class="cs-bg min-h-screen py-20 lg:py-32">
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 section-title">Computer Science</h2>
+                    <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto section-title" style="animation-delay: 0.3s;">Exploring algorithms, data structures, and the art of computation through software.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- CS 1160 -->
+                    <div class="rounded-lg vscode-card card-base overflow-hidden flex flex-col">
+                        <div class="vscode-header">
+                            <div class="vscode-controls"><span></span><span></span><span></span></div>
+                            <span class="text-sm text-slate-400 font-fira-code">/basics/main.py</span>
+                        </div>
+                        <div class="vscode-body flex-grow">
+                            <div class="line-numbers font-fira-code text-sm"><pre>1
+2
+3
+4
+5
+6</pre></div>
+                            <pre class="vscode-pre text-sm font-fira-code overflow-x-auto"><code class="language-python"><span class="syntax-keyword-vs">def</span> <span class="syntax-function-vs">greet</span>(<span class="syntax-variable-vs">name</span>):
+    <span class="syntax-string-vs">f"Hello, {name}!"</span>
+<span class="syntax-comment-vs"># Get user input</span>
+user_name = <span class="syntax-function-vs">input</span>(<span class="syntax-string-vs">"Enter your name: "</span>)
+<span class="syntax-function-vs">print</span>(<span class="syntax-function-vs">greet</span>(user_name))
+</code></pre>
+                        </div>
+                        <div class="p-6 border-t border-gray-700">
+                            <h3 class="font-fira-code font-bold text-xl text-slate-200">CS 1160</h3>
+                            <p class="text-slate-400 mt-2 text-sm">Intro to Computer Programming: Python fundamentals, I/O, control structures, OOP, and GUIs.</p>
+                            <a href="https://github.com/WSU-Classes/CS1160" target="_blank" class="inline-block mt-4 font-semibold text-blue-400 hover:text-blue-300 transition-colors cs-card-link">View Repo </a>
+                        </div>
+                    </div>
+                    <!-- CS 1180 -->
+                    <div class="rounded-lg vscode-card card-base overflow-hidden flex flex-col">
+                        <div class="vscode-header">
+                            <div class="vscode-controls"><span></span><span></span><span></span></div>
+                             <span class="text-sm text-slate-400 font-fira-code">/oop/Shape.java</span>
+                        </div>
+                         <div class="vscode-body flex-grow">
+                            <div class="line-numbers font-fira-code text-sm"><pre>1
+2
+3
+4
+5
+6
+7</pre></div>
+                            <pre class="vscode-pre text-sm font-fira-code overflow-x-auto"><code class="language-java"><span class="syntax-keyword-vs">public class</span> <span class="syntax-class-vs">Shape</span> {
+    <span class="syntax-keyword-vs">protected int</span> x, y;
+    
+    <span class="syntax-keyword-vs">public</span> <span class="syntax-class-vs">Shape</span>(<span class="syntax-keyword-vs">int</span> x, <span class="syntax-keyword-vs">int</span> y) {
+        <span class="syntax-keyword-vs">this</span>.x = x;
+        <span class="syntax-keyword-vs">this</span>.y = y;
+    }
+}</code></pre>
+                        </div>
+                        <div class="p-6 border-t border-gray-700">
+                            <h3 class="font-fira-code font-bold text-xl text-slate-200">CS 1180</h3>
+                            <p class="text-slate-400 mt-2 text-sm">Computer Science I: Object-oriented programming concepts, class design, and the program development lifecycle.</p>
+                            <a href="https://github.com/WSU-Classes/CS1180" target="_blank" class="inline-block mt-4 font-semibold text-blue-400 hover:text-blue-300 transition-colors cs-card-link">View Repo </a>
+                        </div>
+                    </div>
+                    <!-- CS 1181 -->
+                    <div class="rounded-lg vscode-card card-base overflow-hidden flex flex-col">
+                        <div class="vscode-header">
+                            <div class="vscode-controls"><span></span><span></span><span></span></div>
+                             <span class="text-sm text-slate-400 font-fira-code">/structs/Node.cpp</span>
+                        </div>
+                        <div class="vscode-body flex-grow">
+                            <div class="line-numbers font-fira-code text-sm"><pre>1
+2
+3
+4
+5
+6</pre></div>
+                            <pre class="vscode-pre text-sm font-fira-code overflow-x-auto"><code class="language-cpp"><span class="syntax-keyword-vs">template</span> &lt;<span class="syntax-keyword-vs">typename</span> T&gt;
+<span class="syntax-keyword-vs">struct</span> <span class="syntax-class-vs">Node</span> {
+    T data;
+    Node* next;
+};
+<span class="syntax-comment-vs">// For a linked list</span>
+</code></pre>
+                        </div>
+                        <div class="p-6 border-t border-gray-700">
+                            <h3 class="font-fira-code font-bold text-xl text-slate-200">CS 1181</h3>
+                            <p class="text-slate-400 mt-2 text-sm">Computer Science II: Advanced programming, focusing on the use of data structures and tools that facilitate coding.</p>
+                            <a href="https://github.com/WSU-Classes/CS1181" target="_blank" class="inline-block mt-4 font-semibold text-blue-400 hover:text-blue-300 transition-colors cs-card-link">View Repo </a>
+                        </div>
+                    </div>
+                    <!-- CS 3100 -->
+                    <div class="rounded-lg vscode-card card-base overflow-hidden flex flex-col">
+                        <div class="vscode-header">
+                            <div class="vscode-controls"><span></span><span></span><span></span></div>
+                            <span class="text-sm text-slate-400 font-fira-code">/algos/Fib.js</span>
+                        </div>
+                         <div class="vscode-body flex-grow">
+                            <div class="line-numbers font-fira-code text-sm"><pre>1
+2
+3
+4
+5
+6</pre></div>
+                            <pre class="vscode-pre text-sm font-fira-code overflow-x-auto"><code class="language-javascript"><span class="syntax-keyword-vs">function</span> <span class="syntax-function-vs">fib</span>(<span class="syntax-variable-vs">n</span>) {
+  <span class="syntax-keyword-vs">if</span> (n &lt;= <span class="syntax-number-vs">1</span>) <span class="syntax-keyword-vs">return</span> n;
+  <span class="syntax-keyword-vs">return</span> <span class="syntax-function-vs">fib</span>(n - <span class="syntax-number-vs">1</span>) + <span class="syntax-function-vs">fib</span>(n - <span class="syntax-number-vs">2</span>);
+}
+<span class="syntax-comment-vs">// O(2^n) complexity</span>
+</code></pre>
+                        </div>
+                        <div class="p-6 border-t border-gray-700">
+                            <h3 class="font-fira-code font-bold text-xl text-slate-200">CS 3100</h3>
+                            <p class="text-slate-400 mt-2 text-sm">Data Structures & Algorithms: Implementation and complexity analysis of common data structures.</p>
+                            <a href="https://github.com/WSU-Classes/CS3100" target="_blank" class="inline-block mt-4 font-semibold text-blue-400 hover:text-blue-300 transition-colors cs-card-link">View Repo </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="section-transition cs-to-ceg-transition"><div class="trace-divider"></div></div>
+
+        <!-- =================================================================== -->
+        <!-- Computer Engineering Section -->
+        <!-- =================================================================== -->
+        <section id="ceg" class="ceg-bg min-h-screen py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 section-title">Computer Engineering</h2>
+                    <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto section-title" style="animation-delay: 0.3s;">Bridging software and hardware, from digital logic to embedded systems.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- CEG 3310 -->
+                    <div class="bg-slate-50 rounded-lg p-6 card-base ceg-card flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-xl text-slate-800">CEG 3310: Comp Organization</h3>
+                            <p class="text-slate-600 mt-2 text-sm">Binary systems, memory hierarchy, addressing modes, interrupts, I/O, and cache.</p>
+                            <div class="ceg-snippet">
+                                <pre><code><span class="syntax-asm-op">ADD</span>  <span class="syntax-asm-reg">R1, R2, R3</span>  ; R1 &lt;- R2 + R3
+<span class="syntax-asm-op">AND</span>  <span class="syntax-asm-reg">R4, R4, #0</span>  ; Clear R4
+<span class="syntax-asm-op">TRAP</span> x25        ; Halt</code></pre>
+                            </div>
+                        </div>
+                        <a href="https://github.com/WSU-Classes/CEG3310" target="_blank" class="inline-block mt-4 font-semibold text-teal-600 hover:text-teal-800 transition-colors">View Repo &rarr;</a>
+                    </div>
+                    <!-- CEG 3320 -->
+                    <div class="bg-slate-50 rounded-lg p-6 card-base ceg-card flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-xl text-slate-800">CEG 3320: Digital Sys Design</h3>
+                            <p class="text-slate-600 mt-2 text-sm">Switching algebra, combinational and sequential circuits, and register-level design.</p>
+                             <div class="ceg-snippet">
+                                <pre><code>Cout = A<span class="syntax-logic-op">&middot;</span>B <span class="syntax-logic-op">+</span> Cin<span class="syntax-logic-op">&middot;</span>(A <span class="syntax-logic-op">&oplus;</span> B)
+Sum  = A <span class="syntax-logic-op">&oplus;</span> B <span class="syntax-logic-op">&oplus;</span> Cin</code></pre>
+                            </div>
+                        </div>
+                        <a href="https://github.com/WSU-Classes/CEG3320" target="_blank" class="inline-block mt-4 font-semibold text-teal-600 hover:text-teal-800 transition-colors">View Repo &rarr;</a>
+                    </div>
+                    <!-- CEG 4324 -->
+                    <div class="bg-slate-50 rounded-lg p-6 card-base ceg-card flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-xl text-slate-800">CEG 4324: FPGA Design</h3>
+                            <p class="text-slate-600 mt-2 text-sm">Digital design with VHDL, synthesis for FPGAs, and microcomputer organization.</p>
+                             <div class="ceg-snippet">
+                                <pre><code><span class="syntax-vhdl-keyword">entity</span> MUX <span class="syntax-vhdl-keyword">is port</span> (
+  A, B, S: <span class="syntax-vhdl-keyword">in</span>  <span class="syntax-vhdl-type">std_logic</span>;
+  Z:       <span class="syntax-vhdl-keyword">out</span> <span class="syntax-vhdl-type">std_logic</span>
+); <span class="syntax-vhdl-keyword">end</span> MUX;</code></pre>
+                            </div>
+                        </div>
+                        <a href="https://github.com/WSU-Classes/CEG4324" target="_blank" class="inline-block mt-4 font-semibold text-teal-600 hover:text-teal-800 transition-colors">View Repo &rarr;</a>
+                    </div>
+                    <!-- CEG 4350 -->
+                    <div class="bg-slate-50 rounded-lg p-6 card-base ceg-card flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-xl text-slate-800">CEG 4350: Operating Systems</h3>
+                            <p class="text-slate-600 mt-2 text-sm">OS internals, file systems, process control, virtual memory, and access control in C++.</p>
+                            <div class="ceg-snippet">
+                                <pre><code><span class="syntax-asm-op">push</span> <span class="syntax-asm-reg">rbp</span>          ; Fn Prologue
+<span class="syntax-asm-op">mov</span>  <span class="syntax-asm-reg">rbp, rsp</span>
+<span class="syntax-asm-op">sub</span>  <span class="syntax-asm-reg">rsp, 16</span>      ; Allocate stack
+<span class="syntax-asm-op">mov</span>  <span class="syntax-asm-reg">eax, 0</span>         ; Return 0</code></pre>
+                            </div>
+                        </div>
+                        <a href="https://github.com/WSU-Classes/CEG4350" target="_blank" class="inline-block mt-4 font-semibold text-teal-600 hover:text-teal-800 transition-colors">View Repo &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="section-transition ceg-to-ee-transition"><div class="pcb-trace-divider"></div></div>
+
+        <!-- =================================================================== -->
+        <!-- Electrical Engineering Section -->
+        <!-- =================================================================== -->
+        <section id="ee" class="ee-bg min-h-screen py-20 lg:py-32">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-white section-title">Electrical Engineering</h2>
+                    <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto section-title" style="animation-delay: 0.3s;">Applying physics to design circuits, from analog filters to power systems.</p>
+                </div>
+                 <div class="flex justify-center">
+                    <!-- EE 2010 -->
+                    <div class="max-w-md w-full">
+                        <div class="rounded-lg p-6 card-base ee-card flex flex-col justify-between">
+                           <div>
+                                <h3 class="font-bold text-xl text-amber-400">EE 2010: Analog Circuit Theory</h3>
+                                <div class="waveform-divider"></div>
+                                <p class="text-slate-300 mt-2 text-sm">Covers electrical quantities, transform-calculus impedance models, and conservation laws for analyzing dynamic systems.</p>
+                                <div class="ee-snippet">
+                                    <pre><code><span class="syntax-matlab-comment">% RLC Bandpass Filter Analysis</span>
+R = <span class="syntax-matlab-number">1000</span>; L = <span class="syntax-matlab-number">10e-3</span>; C = <span class="syntax-matlab-number">10e-9</span>;
+s = <span class="syntax-matlab-keyword">tf</span>(<span class="syntax-matlab-string">'s'</span>);
+H = (s/L) / (s^2 + s/(R*C) + <span class="syntax-matlab-number">1</span>/(L*C));
+<span class="syntax-matlab-keyword">bode</span>(H);</code></pre>
+                                </div>
+                                 <div class="mt-4 font-fira-code text-xs text-slate-400">
+                                    <span>CONCEPTS: <span class="ee-spec">KVL/KCL</span>, <span class="ee-spec">OP-AMPS</span>, <span class="ee-spec">RLC CIRCUITS</span></span>
+                                </div>
+                           </div>
+                            <a href="https://github.com/WSU-Classes/EE2010" target="_blank" class="inline-block mt-4 font-semibold text-amber-400 hover:text-amber-300 transition-colors">See Schematics &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+            <p class="mt-2 text-sm">Built with Tailwind CSS and a love for engineering.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+
+
