@@ -48,6 +48,12 @@ Below is a list of courses with archived materials. Each course has its own repo
   * **[CEG 4350: Operating Systems](https://github.com/WSU-Classes/CEG4350)**
 
       * A study of the principles and concepts of modern operating systems. Topics include process management, memory management, file systems, scheduling, and concurrency.
+   
+### Electrical Engineering (EE)
+
+  * **[EE 2010: Analog Circuit Theory](https://github.com/WSU-Classes/EE2010)**
+
+      * Electrical quantities and their relationships, Transform-calculus impedance models of basic circuit elements, Conservation laws leveraging algebraic solutions, Transform-calculus-derived algebraic models of dynamic systems, and mathematical solution techniques.
 
 -----
 
