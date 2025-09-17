@@ -17,19 +17,19 @@ Below is a list of courses with archived materials. Each course has its own repo
 
   * **[CS 1160: Introduction to Computer Programming](https://github.com/WSU-Classes/CS1160)**
 
-      * An introductory course on the fundamentals of computer programming, typically using Python. Covers basic syntax, data structures, and problem-solving.
+      * Basic concepts of programming in Python. Input/output, decision structures, repetition structures, functions, file operations, primitive data types and structures, object-oriented design, data analysis, and graphical user interfaces.
 
   * **[CS 1180: Computer Science I](https://github.com/WSU-Classes/CS1180)**
 
-      * Focuses on foundational programming principles using a language like C++. Topics include variables, control structures, functions, arrays, and an introduction to object-oriented concepts.
+      * Introduction to object-oriented programming. Covers programming essentials such as variables, data types, control flow using iterations and decisions, array handling, and methods, building to design of classes and objects. Students will continuously practice the overall process of program development, starting with design and then coding, compiling, executing, testing, debugging, and documenting.
 
   * **[CS 1181: Computer Science II](https://github.com/WSU-Classes/CS1181)**
 
-      * A continuation of CS I, this course delves deeper into object-oriented programming (OOP), data structures (like linked lists, stacks, queues), and algorithms.
+      * Advanced concepts of computer programming. Use of data structures and tools that facilitate programming.
 
   * **[CS 3100: Data Structures and Algorithms](https://github.com/WSU-Classes/CS3100)**
 
-      * A comprehensive study of fundamental data structures and the algorithms that operate on them. Topics include trees, heaps, hash tables, graphs, and algorithm analysis ($O(n)$).
+      * Study of the implementation of data structures and control structures in professional computer programs. Introduction to the fundamentals of complexity and analysis. Study of common standard problems and solutions (e.g., transitive closure and critical path). Emphasis on high-level language software design.
 
 ### Computer Engineering (CEG)
 
@@ -43,11 +43,11 @@ Below is a list of courses with archived materials. Each course has its own repo
 
   * **[CEG 4324: Digital Integrated Circuit Design with PLDs and FPGAs](https://github.com/WSU-Classes/CEG4324)**
 
-      * An introduction to digital logic and system design using the VHDL hardware description language. Covers combinational and sequential logic design and implementation on FPGAs.
+      * Digital design with behavioral level VHDL; application of VHDL to the design, analysis, and synthesis of digital integrated circuits; field programmable gate arrays (FPGAs) and design and application of digital integrated circuits using FPGA’s. CAD tools, devices and boards will be used in the lab portion of the course. Topics include registers, counters, memory devices, register-level design, microcomputer system organization. Students must show competency in design of digital systems.
 
   * **[CEG 4350: Operating Systems](https://github.com/WSU-Classes/CEG4350)**
 
-      * A study of the principles and concepts of modern operating systems. Topics include process management, memory management, file systems, scheduling, and concurrency.
+      * Overview of operating systems internals. File-system usage and design, process usage and control, virtual memory, multi user systems, access control. Course projects use C++ language.
    
 ### Electrical Engineering (EE)
 
