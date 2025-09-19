@@ -195,6 +195,7 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-xl font-bold text-slate-900 font-fira-code">./portfolio</h1>
             <div class="space-x-6 hidden md:block">
+                <a href="#toc" class="text-slate-600 hover:text-indigo-600 font-medium transition-colors">Table of Contents</a>
                 <a href="#cs" class="text-slate-600 hover:text-blue-600 font-medium transition-colors">Computer Science</a>
                 <a href="#ceg" class="text-slate-600 hover:text-teal-600 font-medium transition-colors">Computer Engineering</a>
                 <a href="#ee" class="text-slate-600 hover:text-amber-500 font-medium transition-colors">Electrical Engineering</a>
@@ -204,6 +205,35 @@
 
     <!-- Main Content -->
     <main>
+        <!-- Table of Contents Section -->
+        <section id="toc" class="py-20 lg:py-32 bg-slate-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 section-title">Table of Contents</h2>
+                    <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto section-title" style="animation-delay: 0.3s;">Navigate through the layers of abstraction, from software to hardware.</p>
+                </div>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                    <a href="#cs" class="group text-center p-6 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300">
+                        <div class="text-5xl mb-4 text-blue-500 font-fira-code">{}</div>
+                        <h3 class="text-xl font-bold text-slate-800">Computer Science</h3>
+                        <p class="text-slate-500 mt-2">Abstract Software & Algorithms</p>
+                    </a>
+                    <div class="text-2xl text-slate-300 hidden md:block">&rarr;</div>
+                     <a href="#ceg" class="group text-center p-6 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300">
+                        <div class="text-5xl mb-4 text-teal-500">⚙️</div>
+                        <h3 class="text-xl font-bold text-slate-800">Computer Engineering</h3>
+                        <p class="text-slate-500 mt-2">Systems & Hardware Interface</p>
+                    </a>
+                    <div class="text-2xl text-slate-300 hidden md:block">&rarr;</div>
+                    <a href="#ee" class="group text-center p-6 rounded-lg hover:bg-white hover:shadow-lg transition-all duration-300">
+                        <div class="text-5xl mb-4 text-amber-500">⚡</div>
+                        <h3 class="text-xl font-bold text-slate-800">Electrical Engineering</h3>
+                        <p class="text-slate-500 mt-2">Concrete Circuits & Physics</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- =================================================================== -->
         <!-- Computer Science Section -->
         <!-- =================================================================== -->
@@ -449,18 +479,11 @@ H = (s/L) / (s^2 + s/(R*C) + <span class="syntax-matlab-number">1</span>/(L*C));
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-400 py-8">
         <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2024 Your Name. All Rights Reserved.</p>
+            <p>&copy; 2024 Nick Pontious. All Rights Reserved.</p>
             <p class="mt-2 text-sm">Built with Tailwind CSS and a love for engineering.</p>
         </div>
     </footer>
 
 </body>
 </html>
-
-
-
-
-
-
-
 
