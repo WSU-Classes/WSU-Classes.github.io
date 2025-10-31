@@ -133,10 +133,23 @@
             font-size: 0.8rem;
             color: #475569; /* slate-600 */
         }
+        /* C Syntax Highlighting */
+        .syntax-c-keyword { color: #1d4ed8; } /* blue-700 */
+        .syntax-c-comment { color: #059669; } /* emerald-600 */
+        .syntax-c-function { color: #be123c; } /* rose-700 */
+        .syntax-c-number { color: #ea580c; } /* orange-600 */
+        .syntax-c-variable { color: #5B21B6; } /* violet-700 */
+        .syntax-c-special { color: #475569; } /* slate-600 */
+        
+        /* ASM Syntax Highlighting */
         .syntax-asm-reg { color: #be123c; } /* rose-700 */
         .syntax-asm-op { color: #1d4ed8; } /* blue-700 */
+        
+        /* VHDL Syntax Highlighting */
         .syntax-vhdl-keyword { color: #0d9488; } /* teal-600 */
         .syntax-vhdl-type { color: #ea580c; } /* orange-600 */
+        
+        /* Logic Syntax Highlighting */
         .syntax-logic-op { color: #65a30d; } /* lime-600 */
 
 
@@ -243,7 +256,7 @@
                     <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 section-title">Computer Science</h2>
                     <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto section-title" style="animation-delay: 0.3s;">Exploring algorithms, data structures, and the art of computation through software.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     <!-- CS 1160 -->
                     <div class="rounded-lg vscode-card card-base overflow-hidden flex flex-col">
                         <div class="vscode-header">
@@ -377,7 +390,7 @@ user_name = <span class="syntax-function-vs">input</span>(<span class="syntax-st
                     <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 section-title">Computer Engineering</h2>
                     <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto section-title" style="animation-delay: 0.3s;">Bridging software and hardware, from digital logic to embedded systems.</p>
                 </div>
-                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
                     <!-- CEG 3310 -->
                     <div class="bg-slate-50 rounded-lg p-6 card-base ceg-card flex flex-col justify-between">
                         <div>
@@ -421,15 +434,23 @@ Sum  = A <span class="syntax-logic-op">&oplus;</span> B <span class="syntax-logi
                     <div class="bg-slate-50 rounded-lg p-6 card-base ceg-card flex flex-col justify-between">
                         <div>
                             <h3 class="font-bold text-xl text-slate-800">CEG 4350: Operating Systems</h3>
-                            <p class="text-slate-600 mt-2 text-sm">OS internals, file systems, process control, virtual memory, and access control in C++.</p>
+                            <p class="text-slate-600 mt-2 text-sm">OS internals, file systems, process control, virtual memory, and access control in C.</p>
                             <div class="ceg-snippet">
-                                <pre><code><span class="syntax-asm-op">isr_common_stub:</span>
-  <span class="syntax-asm-op">pusha</span>          ; Save registers
-  <span class="syntax-asm-op">mov</span>  <span class="syntax-asm-reg">ax, 0x10</span>   ; Kernel Data Seg
-  <span class="syntax-asm-op">mov</span>  <span class="syntax-asm-reg">ds, ax</span>
-  <span class="syntax-asm-op">call</span> _irq_handler ; Call C handler
-  <span class="syntax-asm-op">popa</span>           ; Restore registers
-  <span class="syntax-asm-op">iret</span>           ; Return from interrupt</code></pre>
+                                <pre><code class="language-c"><span class="syntax-c-comment">// Round-robin scheduler</span>
+<span class="syntax-c-keyword">int</span> <span class="syntax-c-function">schedule</span>() {
+    <span class="syntax-c-keyword">int</span> start_pid = <span class="syntax-c-number">0</span>;
+    <span class="syntax-c-keyword">if</span> (prev != <span class="syntax-c-number">0</span>) {
+        start_pid = prev->pid;
+    }
+    <span class="syntax-c-keyword">for</span> (<span class="syntax-c-keyword">int</span> i = <span class="syntax-c-number">0</span>; i < MAX_PROCS; i++) {
+        <span class="syntax-c-keyword">int</span> pid = (start_pid + i) % MAX_PROCS;
+        <span class="syntax-c-keyword">if</span> (processes[pid].status == PROC_STATUS_READY) {
+            next = &processes[pid];
+            <span class="syntax-c-keyword">return</span> <span class="syntax-c-number">1</span>;
+        }
+    }
+    <span class="syntax-c-keyword">return</span> <span class="syntax-c-number">0</span>;
+}</code></pre>
                             </div>
                         </div>
                         <a href="https://github.com/WSU-Classes/CEG4350" target="_blank" class="inline-block mt-4 font-semibold text-teal-600 hover:text-teal-800 transition-colors">View Repo &rarr;</a>
@@ -486,4 +507,6 @@ H = (s/L) / (s^2 + s/(R*C) + <span class="syntax-matlab-number">1</span>/(L*C));
 
 </body>
 </html>
+
+
 
